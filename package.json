@@ -1,0 +1,17 @@
+{
+  "name": "redux-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "mdx-deck deck.mdx",
+    "build": "mdx-deck build deck.mdx"
+  },
+  "dependencies": {
+    "mdx-deck": "^1.6.7",
+    "mdx-deck-code-surfer": "^0.4.0",
+    "raw-loader": "^0.5.1"
+  },
+  "author": "Deepak Jayaram",
+  "license": "MIT"
+}
