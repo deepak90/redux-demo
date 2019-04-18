@@ -10,7 +10,11 @@
   "dependencies": {
     "mdx-deck": "^1.6.7",
     "mdx-deck-code-surfer": "^0.4.0",
-    "raw-loader": "^0.5.1"
+    "nuka-carousel": "^4.5.4",
+    "raw-loader": "^0.5.1",
+    "react-redux": "^7.0.2",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8"
   },
   "author": "Deepak Jayaram",
   "license": "MIT"

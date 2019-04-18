@@ -1,0 +1,31 @@
+import React, { Component } from "react"
+
+class ReactCounter extends Component {
+  
+  state = { 
+    counter: 0,
+    rotation: 0
+  };
+
+  incrementCounter = incrementValue => {
+    this.setState(prevstate => ({
+      counter: prevstate.counter + incrementValue,
+      rotation: prevstate.rotation + 5
+    }))
+  }
+
+  render() {
+    return (
+      <div>
+        <button onClick={this.incrementCounter(1)}>
+            +{this.props.incrementValue}
+        </button>
+        <div>
+            <span>{this.state.counter}</span>
+        </div>
+      </div>
+    )
+  }
+}
+
+export default ReactCounter
