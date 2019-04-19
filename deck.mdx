@@ -28,10 +28,11 @@ import { store } from './code/ReduxCounter.jsx'
 <Notes>
   <ul>
     <li>Good Morning guys! Thank you for coming to my session!</li>
-    <li>definitely a clickbait title - there's a lot to talk about redux that that would not fit 55 minutes </li>
+    <li>definitely a clickbait title - there's a lot to talk about redux that that would not fit in 55 minutes </li>
     <li>So, today, let's talk about what redux is, what problems does it solve, the 3 driving principles and what components support these principles</li>
-    <li>There's some amazing documentation online about the API - at the end of the day all I hope to achieve with this is if you're looking through code and you see something called reducers or actions - you know on a high level 
+    <li>There's some amazing documentation online about the API - at the end of the day all I hope to achieve is that if you're looking through code and you see something called reducers or actions - you know on a high level 
       what this piece of code does</li>
+      <li>The link to the slide deck is on microsoft teams - no login or microsoft office needed. Feel free to stop me at any time during the presentation to ask questions!</li>
   </ul>
 </Notes>
 
@@ -44,8 +45,9 @@ import { store } from './code/ReduxCounter.jsx'
   <ul>
     <li>what a time to be alive!! There's one every week!</li>
     <li>They're efficient and performant</li>
-    <li>they've got cool things like shadow dom to make fast diffs - fast rendering times</li>
-    <li>There's a lot of things these frameworks do, but for the sake of our topic today, let's zero in on one </li>
+    <li>cool features like react has shadow dom and reusable components, Angular's got two way binding, support for progressive web apps out of the box, Backbone's a dumpster fire</li>
+    <li>But they've all got one thing in common - they've got to store, manage, represent and share data between their components in some form</li>
+    <li>For the sake of our topic today, let's zero in on one </li>
   </ul>
 </Notes>
 
@@ -72,8 +74,8 @@ export default Split
   <ul>
     <li>with around 125,000 stars on github, and used in about a million sites worldwide - React is the framework of choice here at DDC </li>
     <li>The heart of every React component is its “state”, an object that determines how that component renders & behaves. In other words, “state” is what allows you to create components that are dynamic and interactive. </li>
-    <li>there can be multiple component and State can be set on each of these</li>
-    <li>As applications grow bigger, managing states shared across components becomes a chore - what if I wanted to share the count with another component? </li>
+    <li>there can be multiple components and State can be set on each of these</li>
+    <li>As applications grow bigger, managing states shared across components becomes a chore - what if I wanted to share the count with another component? and I totally can using props -(talk about props) </li>
     <li>Basically, the state will have to be lifted up to the nearest parent component and to the next until it gets to an ancestor that is common to both components that need the state and then it is passed down. This makes the state difficult to maintain and less predictable. It also means passing data to components that do not need such data.</li>
     <li>Prop drilling (also called "threading") refers to the process you have to go through to get data to parts of the React Component tree. As an application grows, you may find yourself drilling through many layers of components. parent can’t pass a prop directly to one of its grandchildren it needs to go through other components on its way down. </li>
     <li>Questions like can I safely update/ delete this component without causing stuff to blow up?</li>
@@ -104,7 +106,7 @@ export default Split
     <li>setState is the only legitimate way to update state after initial startup\</li>
     <li>we’re passing an object to setState(). The object contains the part of the state we want to update which, in this case, is both the counter and the rotation</li>
     <li>This basically kicks off a process that React calls reconciliation. The reconciliation process is the way React updates the DOM, by making changes to the component based on the change in state.</li>
-    <li>real gotcha - setState is asynchronous - so, do not rely on this.state immediately after calling setState, use updater functions instead </li>
+    <li>real gotcha - setState is asynchronous - so, do not rely on this.state immediately after calling setState </li>
   </ul>
 </Notes>
 
@@ -134,11 +136,8 @@ export default Split
 <Notes>
   <ul>
     <li>A unidirectional data flow is central to the Flux pattern</li> 
-    <li>there are multiple stores in the application, also there seems to be something called the dispatcher </li>
-    <li>Stores let the dispatcher know that they want to be notified whenever an action comes in. Then the controller views ask the stores for the latest state</li>
-    <li>When the stores give the state to the controller views, they pass that state along to their child views to render</li>
-    <li>The view tells the action creator to prepare an action</li>
-    <li>>A Lot of moving parts here - I wanted to mention flux because it inspired better state management libraries </li>
+    <li>In that diagram, there are components called store, action, view etc  - that I don't wanna go into but I wanted to mention flux because it inspired better state management libraries</li>
+    <li>>when it came out - it was met with a ton of praise but there was considerable criticism - A Lot of moving parts and learning curve was substantial </li>
   </ul>
 </Notes>
 
@@ -152,9 +151,8 @@ export default Split
     <li>Redux is a predictable state container for JavaScript apps</li>
     <li>It's is a very small library (2kb) that gives you tools to achieve a better state management in javascript applications</li>
     <li>predictable means applications behave consistently</li>
-    <li>Features a centralized application state - single source of truth</li>
     <li>An important point to note is that redux does not depend on react - works with any UI layer </li>
-    <li>Let's look at the three principles of Redux - and also some of the core components of Redux </li>
+    <li>Let's look at the three principles and some of the core components of Redux </li>
   </ul>
 </Notes>
 
@@ -168,11 +166,10 @@ export default Split
 
 <Notes>
   <ul>
-    <li>The state of your application is going to be represented as a single JavaScript object.</li>
-    <li>A single state tree makes it easier to debug or inspect an application</li>
-    <li>This makes it easy to create universal apps, as the state from your server can be serialized and hydrated into the client with no extra coding effort</li>
+    <li>The state of your application is going to be represented as a single JavaScript object - in Redux, it's kept in an another object called a store</li>
+    <li>A single state tree makes it easier to debug or inspect an application - we'll get to it soon</li>
+    <li>This makes it easy to create universal apps, as the state from your server can be serialized and sent the client with no extra coding effort</li>
     <li>it also enables you to persist your app's state in development, for a faster development cycle </li>
-    <li>In Redux, the entire state of your application is kept in a store</li>
   </ul>
 </Notes>
 
@@ -228,6 +225,7 @@ export default Split
     <li>Actions must have a type property set - why? remember flux? the framework from which redux was inspired? The Flux Standard Action format for defining actions as "type, payload, error" was inherited from flux</li>
     <li>Having this property required by convention keeps the code clean and consistent</li>
     <li>Type property is generally a string - this is for serialization. Object serialization is the process of converting an object’s state to a string from which it can later be restored.</li>
+    <li>How can i create actions? </li>
   </ul>
 </Notes>
 
@@ -246,10 +244,9 @@ export default Split
   <ul>
     <li>How are actions created? using an Action Creator!</li>
     <li>Action creators are exactly that—functions that create actions.</li>
-    <li>Rather than writing action type strings in every component that needs to create the same type of action, put the logic for creating that action in one place</li>
-    <li>The parameters of the function act as a guide for what data is needed to go into the action.</li>
-    <li>Testability</li>
-    <li>Creating an action expresses an intent to modify the state</li>
+    <li>they're invoked from the view in response to a user input or a network response </li>
+    <li>You cannot modify the state directly but Creating an action expresses an intent to modify the state</li>
+    <li>Hey I just created an action - how does this modify state? - well - let's look at the third and final principle of redux</li>
   </ul>
 </Notes>
 
@@ -270,7 +267,6 @@ export default Split
   theme={vsDark}
   showNumbers
   steps={[
-    { range:  [1, 8], notes: "Pure functions" },
     { range:  [2, 4], notes: "square() is predictable" },
     { range:  [11, 14], notes: "whereas, this one's not" },
     { range:  [6, 8], notes: "squareAll returns new array" },
@@ -305,7 +301,7 @@ export default Split
     <li>And now we focus on the last of the core components: reducers - they're kinda like the rockstar of redux world</li>
     <li>Like The humble coffee maker which takes in coffee powder and water and returns a freshly brewed cup of coffee - Reducers are pure functions that take in a state and action and return a new state. </li>
     <li>Redux checks whether the old object is the same as the new object by comparing the memory locations of the two objects.  So if you mutate the old object’s property inside a reducer, the “new state” and the “old state” will both point to the same object. Hence Redux thinks nothing has changed!</li>
-    <li>there is only one way to know if two JavaScript objects have the same properties. To deep-compare them. But this becomes extremely expensive in real-world apps, because of the typically large objects and the number of times they need to be compared.So one work around is to have a policy to ask developers to create a new object whenever there is a change, then send it to the framework. And if there are no changes, then send back the old object as it is. In other words, new objects represent new states.</li>
+    <li>there is only one way to know if two JavaScript objects have the same properties. To deep-compare them. But this becomes extremely expensive in large real-world apps. So one work around is to have a policy to ask developers to create a new object whenever there is a change, then send it to the framework. And if there are no changes, then send back the old object as it is. In other words, new objects represent new states.</li>
   </ul>
 </Notes>
 
@@ -369,9 +365,12 @@ export default Split
 
 ---
 
-## Resources
+export default Split
 
-<ul style={{listStyle: "none"}}>
+ <img src="./images/scooby.jpg" style={{ marginRight: "25px"}} />
+
+<ul style={{listStyle: "none", textAlign: "left"}}>
+  <h2>Resources</h2>
   <li style={{paddingBottom: "25px"}}><a href="https://redux.js.org/" target="BLANK">Redux JS Official Website</a></li>
   <li style={{paddingBottom: "25px"}}><a href="https://overreacted.io/" target="BLANK">Dan Abramov's Blog</a></li>
   <li style={{paddingBottom: "25px"}}><a href="https://github.com/jxnblk/mdx-deck" target="BLANK">MDX Deck</a></li>
